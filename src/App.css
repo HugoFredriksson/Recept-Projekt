@@ -8,36 +8,45 @@ body header {
   text-align: center;
 }
 body header nav {
-  background-color: #C6EBBE;
+  background-color: #38369A;
 }
 body header nav ul {
   display: grid;
   text-decoration: none;
   list-style-type: none;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0;
 }
 body header nav ul li a {
   text-decoration: none;
   color: white;
 }
-body ul {
-  padding: 10px;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-body ul article {
-  border: 2px solid black;
-}
-
-header {
+body header {
   grid-area: header;
 }
-
-main {
+body main {
   grid-area: main;
   background-color: rgb(255, 255, 255);
 }
-
-footer {
+body main .grid-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+body main .grid-container ul li {
+  width: 45%;
+  margin: 10px;
+  border: 2px solid black;
+}
+body footer {
   grid-area: footer;
+}
+
+@media only screen and (max-width: 650px) {
+  #root body header nav ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }/*# sourceMappingURL=App.css.map */

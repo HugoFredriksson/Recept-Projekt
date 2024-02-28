@@ -1,24 +1,21 @@
-import * as React from "react";
-import styles from "./HomePage.module.css";
+import React from 'react'
+import Header from '../../components/Header/Header'
+import ViewAllRecipes from '../../service/api/ViewAllRecipes'
+import Footer from '../../components/Footer/Footer'
 
-class HomePage extends React.Component {
-    render() {
-      return (
-        <div>
-          <div>Stack Exchange Search</div>
-          <div>
-            <p>This will search Stack Exchange questions for given title text.</p>
-            <p>
-              Enter your search text and click the icon or press the Enter key. A
-              list of matching questions will be shown.
-            </p>
-            <p>After that, you can click on a question to see the answers.</p>
-            
-            <h3>Written in React 16.9.0 with TypeScript</h3>
-          </div>
+interface Props {}
+
+const HomePage = (props: Props) => {
+    return (
+    <div className="App">
+      <main>
+        <div className='grid-container'>
+          <ViewAllRecipes></ViewAllRecipes>
         </div>
-      );
-    }
-  }
-  
-  export default HomePage;
+      </main>  
+      <Footer></Footer>
+    </div>
+    )
+}
+
+export default HomePage
