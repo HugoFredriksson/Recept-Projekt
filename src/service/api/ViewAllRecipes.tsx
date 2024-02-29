@@ -1,17 +1,20 @@
 import React from 'react';
 import { useEffect, useState} from 'react';
 
-const path = "https://localhost:7274/Recipe/ViewAllRecipes";
+const path = "https://localhost:7118/Recipe/ViewAllRecipes";
 
 interface Post {
     id: number;
     userId: number;
     userName: string;
     title: string;
+    categories: string;
+    ingredients: string;
     description: string;
     imageUrl: string;
     timeStamp: string;
     content: string;
+    likeCount: number;
 }
 
 export default function ViewAllRecipes() {
@@ -38,24 +41,27 @@ export default function ViewAllRecipes() {
     }, []);
 
     if (isLoading) {
-      return <div>Loading...</div>
+      return <img src='loading.svg'></img>
     }
 
     if (error) {
-      return <div>Something went wrong! Please try again.</div>
+      return <div>Something went wrong! Please try again.😢</div>
     }
 
     return (
         <div className='recipes'>
-          <h1 className='mb-4 text-2xl'>Recept</h1>
+          <h1>Recept</h1>
           <ul>
             {posts.map((post) => (
               <li key={post.id}>
                 <h2>{post.title}</h2>
+                <p>👍{post.likeCount}</p>
                 <h3>{post.description}</h3>
+                <p>{post.categories}</p>
                 <h3>{post.userName + " UserId:" + post.userId}</h3>
                 <img src={post.imageUrl + ".svg"} alt={post.title} />
                 <p>{post.timeStamp}</p>
+                <p>{post.ingredients}</p>
                 <p>{post.content}</p>
               </li>
             ))}
