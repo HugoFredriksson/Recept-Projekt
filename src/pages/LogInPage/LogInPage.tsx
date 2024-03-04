@@ -18,4 +18,4 @@ const LogInPage = (props: Props) => {
     )
 }
 
-export default LogInPage
+export default LogInPage;

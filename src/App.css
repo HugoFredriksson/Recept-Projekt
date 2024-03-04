@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap");
 body {
   text-align: center;
+}
+body h1, body h2, body h3 {
+  font-family: "Domine", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 body header {
   display: grid;
@@ -29,17 +35,22 @@ body main {
   background-color: rgb(255, 255, 255);
 }
 body main .grid-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-body main .grid-container ul li {
-  width: 45%;
-  margin: 10px;
   border: 2px solid black;
+  border-radius: 20px;
+  width: 60%;
+  padding: 0;
+  padding-right: 40px;
+  padding-left: 40px;
+  margin: auto;
+  list-style: none;
+}
+body main .grid-container ul li p {
+  border: 2px solid black;
+  border-radius: 20px;
+}
+body main .grid-container ul section {
+  border: 2px solid black;
+  border-radius: 20px;
 }
 body footer {
   grid-area: footer;

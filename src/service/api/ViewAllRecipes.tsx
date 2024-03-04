@@ -8,19 +8,20 @@ interface Post {
     userId: number;
     userName: string;
     title: string;
-    categories: string;
+    categories: { id: number; recipeId: number; categories: string;}[];
     ingredients: string;
     description: string;
     imageUrl: string;
     timeStamp: string;
     content: string;
     likeCount: number;
+    comments: {}[];
 }
 
 export default function ViewAllRecipes() {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
-    const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -50,22 +51,27 @@ export default function ViewAllRecipes() {
 
     return (
         <div className='recipes'>
-          <h1>Recept</h1>
-          <ul>
+          <h2>Recept</h2>
             {posts.map((post) => (
-              <li key={post.id}>
-                <h2>{post.title}</h2>
-                <p>👍{post.likeCount}</p>
-                <h3>{post.description}</h3>
-                <p>{post.categories}</p>
-                <h3>{post.userName + " UserId:" + post.userId}</h3>
-                <img src={post.imageUrl + ".svg"} alt={post.title} />
-                <p>{post.timeStamp}</p>
-                <p>{post.ingredients}</p>
-                <p>{post.content}</p>
-              </li>
+              <ul key={post.id}>
+                <li><h2>{post.title}</h2></li>
+                <li><h2>👍{post.likeCount}</h2></li>
+                <section className="categoriesUl">Kategorier:
+                            {post.categories.map((category, index) => (
+                                <p key={index}>{category.categories}</p>
+                            ))}
+                        </section>
+                <li><h3>{post.description}</h3></li>
+                <li><h3>{post.userName + " UserId:" + post.userId}</h3></li>
+                <li><img src={post.imageUrl + ".svg"} alt={post.title} /></li>
+                <li><p>{post.timeStamp}</p></li>
+                <li><p>{post.ingredients}</p></li>
+                <li><p>{post.content}</p></li>
+                <li>
+                
+                </li>
+              </ul>
             ))}
-          </ul>
         </div>
       );
     }
