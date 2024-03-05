@@ -63,7 +63,7 @@ export default function ViewAllRecipes() {
                         </section>
                 <li><h3>{post.description}</h3></li>
                 <li><h3>{post.userName + " UserId:" + post.userId}</h3></li>
-                <li><img src={post.imageUrl + ".svg"} alt={post.title} /></li>
+                <li><img src={post.imageUrl + ".png"} alt={post.title} /></li>
                 <li><p>{post.timeStamp}</p></li>
                 <li><p>{post.ingredients}</p></li>
                 <li><p>{post.content}</p></li>
