@@ -2,35 +2,31 @@ import React, { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
 interface User {
+  UserName: string;
   Email: string;
   Password: string;
 }
 
-const LoginComponent: React.FC = () => {
+const CreateUserComponent: React.FC = () => {
   const [user, setUser] = useState<User>({
+    UserName: '',
     Email: '',
     Password: '',
   });
 
-  const loginUser = async () => {
+  const createUser = async () => {
     try {
-      const response: AxiosResponse<string> = await axios.get(
-        'https://localhost:7274/User/LogIn',
-        {
-          headers: {
-          Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`, 
-          },
-        }
+      const response: AxiosResponse<string> = await axios.post(
+        'https://localhost:7274/User/CreateUser',
+        user
       );
-
-      // Save the login key (GUID) to local storage
       localStorage.setItem('GUID', response.data);
-
-      console.log('Login successful:', response.data);
+      console.log('User created successfully:', response.data);
+      
       // You can handle success, redirect, or update UI as needed
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error('Login failed:', axiosError.response?.data);
+      console.error('Error creating user:', axiosError.response?.data);
       // You can handle errors and update UI accordingly
     }
   };
@@ -44,8 +40,17 @@ const LoginComponent: React.FC = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Create User</h2>
       <form>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            name="UserName"
+            value={user.UserName}
+            onChange={handleInputChange}
+          />
+        </div>
         <div>
           <label>Email:</label>
           <input
@@ -64,12 +69,12 @@ const LoginComponent: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="button" onClick={loginUser}>
-          Login
+        <button type="button" onClick={createUser}>
+          Create User
         </button>
       </form>
     </div>
   );
 };
 
-export default LoginComponent;
+export default CreateUserComponent;

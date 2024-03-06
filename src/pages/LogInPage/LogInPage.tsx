@@ -1,6 +1,8 @@
 import React from 'react'
 import Footer from '../../components/Footer/Footer'
 import LogIn from '../../components/LogIn/LogIn'
+import CreateUserComponent from '../../components/CreateUser/CreateUser'
+import LogoutComponent from '../../components/LogOut/LogOut'
 
 interface Props {}
 
@@ -12,6 +14,9 @@ const LogInPage = (props: Props) => {
         <div className='grid-container'>
             <LogIn></LogIn>
         </div>
+        <h2>Har du inte ett konto?</h2>
+        <CreateUserComponent></CreateUserComponent>
+        <LogoutComponent></LogoutComponent>
       </main>  
       <Footer></Footer>
     </div>
