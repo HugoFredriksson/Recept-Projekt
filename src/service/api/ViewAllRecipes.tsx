@@ -39,6 +39,7 @@ export default function ViewAllRecipes() {
         };
 
         fetchPosts();
+        console.log(posts);
     }, []);
 
     if (isLoading) {
@@ -63,7 +64,7 @@ export default function ViewAllRecipes() {
                         </section>
                 <li><h3>{post.description}</h3></li>
                 <li><h3>{post.userName + " UserId:" + post.userId}</h3></li>
-                <li><img src={post.imageUrl + ".png"} alt={post.title} /></li>
+                <img src={"./recipeImage/" + post.imageUrl + ".png"}alt={post.title} /> 
                 <li><p>{post.timeStamp}</p></li>
                 <li><p>{post.ingredients}</p></li>
                 <li><p>{post.content}</p></li>
