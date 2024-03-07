@@ -15,7 +15,7 @@ const LoginComponent: React.FC = () => {
   const loginUser = async () => {
     try {
       const response: AxiosResponse<string> = await axios.get(
-        'https://localhost:7274/User/LogIn',
+        'https://localhost:7118/User/LogIn',
         {
           headers: {
           Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`, 
@@ -27,11 +27,9 @@ const LoginComponent: React.FC = () => {
       localStorage.setItem('GUID', response.data);
 
       console.log('Login successful:', response.data);
-      // You can handle success, redirect, or update UI as needed
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error('Login failed:', axiosError.response?.data);
-      // You can handle errors and update UI accordingly
     }
   };
 

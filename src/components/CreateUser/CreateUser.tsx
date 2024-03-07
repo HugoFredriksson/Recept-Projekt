@@ -15,19 +15,23 @@ const CreateUserComponent: React.FC = () => {
   });
 
   const createUser = async () => {
+
+    if (Object.values(user).some(value => value.trim() === '')) {
+      console.error('Please fill in all fields.');
+      return;
+    };
+
     try {
       const response: AxiosResponse<string> = await axios.post(
-        'https://localhost:7274/User/CreateUser',
+        'https://localhost:7118/User/CreateUser',
         user
       );
       localStorage.setItem('GUID', response.data);
       console.log('User created successfully:', response.data);
       
-      // You can handle success, redirect, or update UI as needed
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error('Error creating user:', axiosError.response?.data);
-      // You can handle errors and update UI accordingly
     }
   };
 

@@ -13,10 +13,10 @@ const LogInPage = (props: Props) => {
         <h2>Logga In</h2>
         <div className='grid-container'>
             <LogIn></LogIn>
-        </div>
         <h2>Har du inte ett konto?</h2>
         <CreateUserComponent></CreateUserComponent>
-        <LogoutComponent></LogoutComponent>
+        <LogoutComponent></LogoutComponent>´
+        </div>
       </main>  
       <Footer></Footer>
     </div>
