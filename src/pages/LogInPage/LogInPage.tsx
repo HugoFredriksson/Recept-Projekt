@@ -15,7 +15,7 @@ const LogInPage = (props: Props) => {
             <LogIn></LogIn>
         <h2>Har du inte ett konto?</h2>
         <CreateUserComponent></CreateUserComponent>
-        <LogoutComponent></LogoutComponent>´
+        <LogoutComponent></LogoutComponent>
         </div>
       </main>  
       <Footer></Footer>

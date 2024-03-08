@@ -15,7 +15,7 @@ interface Post {
     timeStamp: string;
     content: string;
     likeCount: number;
-    comments: {}[];
+    comments: { commentId: number; userId: number; recipeId: string; timeStamp: string; content: string; userName: string;}[];
 }
 
 export default function ViewAllRecipes() {
@@ -68,6 +68,11 @@ export default function ViewAllRecipes() {
                 <li><p>{post.timeStamp}</p></li>
                 <li><p>{post.ingredients}</p></li>
                 <li><p>{post.content}</p></li>
+                <section className="categoriesUl">Kommentarer:
+                            {post.comments.map((comments, index) => (
+                                <p key={index}>{comments.content + " Namn: " + comments.userName + comments.timeStamp}</p>
+                            ))}
+                        </section>
                 <li>
                 
                 </li>
