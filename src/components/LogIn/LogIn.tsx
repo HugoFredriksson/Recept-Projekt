@@ -15,7 +15,7 @@ const LoginComponent: React.FC = () => {
   const loginUser = async () => {
     try {
       const response: AxiosResponse<string> = await axios.get(
-        'https://localhost:7118/User/LogIn',
+        'https://localhost:7274/User/LogIn',
         {
           headers: {
           Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`, 

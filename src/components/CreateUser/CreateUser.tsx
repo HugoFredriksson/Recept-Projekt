@@ -23,7 +23,7 @@ const CreateUserComponent: React.FC = () => {
 
     try {
       const response: AxiosResponse<string> = await axios.post(
-        'https://localhost:7118/User/CreateUser',
+        'https://localhost:7274/User/CreateUser',
         user
       );
       localStorage.setItem('GUID', response.data);
