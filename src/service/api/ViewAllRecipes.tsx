@@ -1,7 +1,9 @@
 import React from 'react';
 import { useEffect, useState} from 'react';
+import useGetUserId from '../../hooks/GetUserId';
+import LikeButton from '../../components/LikeButton/LikeButton';
 
-const path = "https://localhost:7274/Recipe/ViewAllRecipes";
+const path = "https://localhost:7118/Recipe/ViewAllRecipes";
 
 interface Post {
     id: number;
@@ -19,6 +21,7 @@ interface Post {
 }
 
 export default function ViewAllRecipes() {
+  const UserId = useGetUserId();
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
@@ -56,7 +59,7 @@ export default function ViewAllRecipes() {
             {posts.map((post) => (
               <ul key={post.id}>
                 <li><h2>{post.title}</h2></li>
-                <li><h2>👍{post.likeCount}</h2></li>
+                <li><h2>👍{post.likeCount}<LikeButton recipeId={post.id} /></h2></li>
                 <section className="categoriesUl">Kategorier:
                             {post.categories.map((category, index) => (
                                 <p key={index}>{category.categories}</p>
@@ -70,7 +73,7 @@ export default function ViewAllRecipes() {
                 <li><p>{post.content}</p></li>
                 <section className="categoriesUl">Kommentarer:
                             {post.comments.map((comments, index) => (
-                                <p key={index}>{comments.content + " Namn: " + comments.userName + comments.timeStamp}</p>
+                                <p key={index}>{comments.content + " Namn:  " + comments.userName + comments.timeStamp}</p>
                             ))}
                         </section>
                 <li>

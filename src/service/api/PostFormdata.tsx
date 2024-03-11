@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import useGetUserId from '../../hooks/GetUserId';
 
 function PostReviewFetch() {
+    const UserId  = useGetUserId();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [ingredients, setIngredients] = useState("");
@@ -36,11 +38,11 @@ function PostReviewFetch() {
             
             console.log(JSON.stringify({content, title, ingredients, description, categories, imageUrl}));
             
-            const response = await fetch('https://localhost:7274/Recipe/CreateRecipe', {
+            const response = await fetch('https://localhost:7118/Recipe/CreateRecipe', {
                 method: 'POST',
                 mode: "cors",
                 headers: myHeaders,
-                body: JSON.stringify({'content':content,'title':title, 'description': description,'categories':categories, 'ingredients':ingredients,'imageUrl':imageUrl})
+                body: JSON.stringify({UserId:'UserId','content':content,'title':title, 'description': description,'categories':categories, 'ingredients':ingredients,'imageUrl':imageUrl})
             });
 
             

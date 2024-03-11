@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const YourComponent: React.FC = () => {
+const useGetUserId = () => {
   const [userId, setUserId] = useState<number | null>(null);
 
   const getUserIdFetch = async () => {
     try {
-      const path = 'https://localhost:7274/User/VerifyUserId';
+      const path = 'https://localhost:7118/User/VerifyUserId';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -22,7 +22,6 @@ const YourComponent: React.FC = () => {
       }
 
       const userId = parseInt(await response.text(), 10);
-      console.log('AnvändarID:', userId);
 
       return userId;
     } catch (error) {
@@ -45,16 +44,11 @@ const YourComponent: React.FC = () => {
 
   useEffect(() => {
     if (userId !== null) {
-      console.log('User ID as number:', userId);
+      console.log('UserId:', userId);
     }
   }, [userId]); // Log userId whenever it changes
 
-  return (
-    // Your component JSX here
-    <div>
-      {/* Your component content */}
-    </div>
-  );
+  return userId;
 };
 
-export default YourComponent;
+export default useGetUserId;
