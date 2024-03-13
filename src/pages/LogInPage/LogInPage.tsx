@@ -10,7 +10,6 @@ const LogInPage = (props: Props) => {
     return (
         <div className="App">
       <main>
-        <h2>Logga In</h2>
         <div className='grid-container'>
             <LogIn></LogIn>
         <h2>Har du inte ett konto?</h2>

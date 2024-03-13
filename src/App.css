@@ -45,6 +45,9 @@ body main {
   grid-area: main;
   background-color: rgb(255, 255, 255);
 }
+body main .grid-container {
+  margin-top: 20px;
+}
 body main .grid-container ul {
   border: 2px solid black;
   width: 65%;

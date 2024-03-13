@@ -39,10 +39,10 @@ const LoginComponent: React.FC = () => {
     const { name, value } = e.target;
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
-
+  if (localStorage.getItem('GUID') === null) {
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Logga In!</h2>
       <form>
         <div>
           <label>Email:</label>
@@ -68,6 +68,9 @@ const LoginComponent: React.FC = () => {
       </form>
     </div>
   );
+  } else {
+    return null;
+  }
 };
 
 export default LoginComponent;
