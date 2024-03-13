@@ -10,9 +10,14 @@ const UserInfo = () => {
 
   return (
     <div>
-      <p>User ID: {userId}</p>
-      <p>User Name: {userName}</p>
-      <p>Role: {userRole}</p>
+      <p>UserID: {userId}</p>
+      <p>Användarnamn: {userName}</p>
+      {userRole !== null && (
+        <p>
+          Roll:{" "}
+          {userRole === "3" ? "Admin" : userRole === "2" ? "Normal Användare" : "Gäst"}
+        </p>
+      )}
     </div>
   );
 };

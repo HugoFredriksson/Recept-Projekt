@@ -28,8 +28,11 @@ body header nav ul li {
   padding: 10px;
 }
 body header nav ul li a {
-  text-decoration: none;
-  color: white;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px;
+  border-radius: 30px;
+  border: 2px solid white;
 }
 body header nav ul li a:hover {
   background-color: white;

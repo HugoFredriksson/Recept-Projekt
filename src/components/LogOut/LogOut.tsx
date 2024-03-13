@@ -4,6 +4,7 @@ const LogoutComponent: React.FC = () => {
   const logoutUser = () => {
     localStorage.removeItem('GUID');
     console.log('User logged out');
+    window.location.reload(); 
   };
 
   if (localStorage.getItem('GUID') !== null) {

@@ -11,7 +11,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ recipeId }) => {
 
   const likeRecipe = async () => {
     try {
-      const response = await fetch('https://localhost:7118/Likes/LikeRecipe', {
+      const response = await fetch('https://localhost:7274/Likes/LikeRecipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,6 +23,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ recipeId }) => {
       if (response.status === 200) {
         // Successful like
         setIsLiked(true);
+        window.location.reload();
       } else {
         // Handle the error
         console.error('Failed to like recipe');

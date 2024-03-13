@@ -1,8 +1,10 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import useGetUserId from '../../hooks/GetUserId';
+import useGetUserName from '../../hooks/GetUserName';
 
 function PostReviewFetch() {
-    const UserId  = useGetUserId();
+    const userId  = useGetUserId();
+    const userName = useGetUserName();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [ingredients, setIngredients] = useState("");
@@ -36,13 +38,13 @@ function PostReviewFetch() {
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             
-            console.log(JSON.stringify({content, title, ingredients, description, categories, imageUrl}));
+            console.log(JSON.stringify(formData));
             
-            const response = await fetch('https://localhost:7118/Recipe/CreateRecipe', {
+            const response = await fetch('https://localhost:7274/Recipe/CreateRecipe', {
                 method: 'POST',
                 mode: "cors",
                 headers: myHeaders,
-                body: JSON.stringify({UserId:'UserId','content':content,'title':title, 'description': description,'categories':categories, 'ingredients':ingredients,'imageUrl':imageUrl})
+                body: JSON.stringify({'UserName': userName,'UserId': userId ,'content':content,'title':title, 'description': description,'categories':categories, 'ingredients':ingredients,'imageUrl':imageUrl})
             });
 
             

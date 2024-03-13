@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useGetUserId from '../../hooks/GetUserId';
+import CommentForm from '../../components/CommentForm/CommentForm';
 import LikeButton from '../../components/LikeButton/LikeButton';
 import useGetUserName from '../../hooks/GetUserName';
 
@@ -17,7 +18,7 @@ interface Post {
   userId: number;
   userName: string;
   title: string;
-  categories: { id: number; recipeId: number; categories: string; }[];
+  categories: { id: number; recipeId: number; categories: string }[];
   ingredients: string;
   description: string;
   imageUrl: string;
@@ -26,41 +27,6 @@ interface Post {
   likeCount: number;
   comments: Comment[];
 }
-
-interface CommentFormProps {
-  recipeId: number;
-  userId: number | null; // userId can be null
-  onCommentSubmit: (content: string) => void;
-}
-
-const CommentForm: React.FC<CommentFormProps> = ({ recipeId, userId, onCommentSubmit }) => {
-  const [commentContent, setCommentContent] = useState('');
-
-  const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCommentContent(event.target.value);
-  };
-
-  const submitComment = () => {
-    if (commentContent.trim() !== '') {
-      onCommentSubmit(commentContent);
-      setCommentContent('');
-    }
-  };
-
-  return (
-    <div>
-      <textarea
-        rows={4}
-        cols={30}
-        placeholder="Skriv din kommenter här..."
-        value={commentContent}
-        onChange={handleCommentChange}
-      />
-      <br></br>
-      <button onClick={submitComment}>Lägg Till Kommentar</button>
-    </div>
-  );
-};
 
 const ViewAllRecipes: React.FC = () => {
   const UserId = useGetUserId();
@@ -72,7 +38,7 @@ const ViewAllRecipes: React.FC = () => {
   const fetchPosts = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://localhost:7118/Recipe/ViewAllRecipes');
+      const response = await fetch('https://localhost:7274/Recipe/ViewAllRecipes');
       const posts = await response.json() as Post[];
       setPosts(posts);
     } catch (e: any) {
@@ -88,11 +54,11 @@ const ViewAllRecipes: React.FC = () => {
 
   const handleCommentSubmit = async (recipeId: number, content: string) => {
     try {
-      const response = await fetch('https://localhost:7118/Comment/CreateComment', {
+      const response = await fetch('https://localhost:7274/Comment/CreateComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'your-authorization-token', // replace with your actual token
+          'Authorization': 'your-authorization-token', // Behövs detta ermmmmmm
         },
         body: JSON.stringify({ RecipeId: recipeId, UserId: UserId, UserName: UserName, Content: content }),
       });
@@ -121,7 +87,7 @@ const ViewAllRecipes: React.FC = () => {
       {posts.map((post) => (
         <ul key={post.id}>
           <li><h2>{post.title}</h2></li>
-          <li><h2>👍{post.likeCount}<br></br><LikeButton recipeId={post.id} /></h2></li>
+          <li><h2>👍{post.likeCount}<br /><LikeButton recipeId={post.id} /></h2></li>
           <section className="categoriesUl">Kategorier:
             {post.categories.map((category, index) => (
               <p key={index}>{category.categories}</p>
@@ -131,15 +97,15 @@ const ViewAllRecipes: React.FC = () => {
           <li><h3>{post.userName + " UserId:" + post.userId}</h3></li>
           <img src={"./recipeImage/" + post.imageUrl + ".png"} alt={post.title} />
           <li><p>{post.timeStamp}</p></li>
-          <li><p>Ingredienter: <br></br>{post.ingredients}</p></li>
-          <li><p>Recept: <br></br>{post.content}</p></li>
+          <li><p>Ingredienter: <br />{post.ingredients}</p></li>
+          <li><p>Recept: <br />{post.content}</p></li>
           <section className="categoriesUl">Kommentarer:
             {post.comments.map((comments, index) => (
               <p key={index}>{comments.content + " Namn:  " + comments.userName + " " + comments.timeStamp}</p>
             ))}
-          </section><br></br>
+          </section><br />
           <li>
-            <CommentForm recipeId={post.id} userId={UserId} onCommentSubmit={(content) => handleCommentSubmit(post.id, content)} />
+            <CommentForm recipeId={post.id} userId={UserId} onCommentSubmit={(recipeId, content) => handleCommentSubmit(recipeId, content)} />
           </li>
         </ul>
       ))}

@@ -15,7 +15,7 @@ const LoginComponent: React.FC = () => {
   const loginUser = async () => {
     try {
       const response: AxiosResponse<string> = await axios.get(
-        'https://localhost:7118/User/LogIn',
+        'https://localhost:7274/User/LogIn',
         {
           headers: {
           Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`, 
@@ -26,6 +26,7 @@ const LoginComponent: React.FC = () => {
       // Save the login key (GUID) to local storage
       localStorage.setItem('GUID', response.data);
 
+      window.location.reload(); 
       console.log('Login successful:', response.data);
     } catch (error) {
       const axiosError = error as AxiosError;
