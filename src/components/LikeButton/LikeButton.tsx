@@ -34,7 +34,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ recipeId }) => {
 
   return (
     <button onClick={likeRecipe} disabled={isLiked}>
-      {isLiked ? 'Liked!' : 'Like'}
+      {isLiked ? 'Gillad!' : 'Gilla'}
     </button>
   );
 };

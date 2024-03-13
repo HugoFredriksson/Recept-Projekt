@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useGetUserId = () => {
-  const [userId, setUserId] = useState<number | null>(null);
+const useGetUserName = () => {
+  const [userName, setUserName] = useState<string | null>(null);
 
-  const getUserIdFetch = async () => {
+  const getUserNameFetch = async () => {
     try {
-      const path = 'https://localhost:7118/User/VerifyUserId';
+      const path = 'https://localhost:7118/User/VerifyUserName';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -20,9 +20,9 @@ const useGetUserId = () => {
         return null;
       }
 
-      const userId = parseInt(await response.text(), 10);
+      const fetchedUserName = await response.text();
 
-      return userId;
+      return fetchedUserName;
     } catch (error) {
       console.error('Error:', error);
       return null;
@@ -31,9 +31,9 @@ const useGetUserId = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUserId = await getUserIdFetch();
-      if (fetchedUserId !== null) {
-        setUserId(fetchedUserId);
+      const fetchedUserName = await getUserNameFetch();
+      if (fetchedUserName !== null) {
+        setUserName(fetchedUserName);
       }
     };
 
@@ -41,12 +41,12 @@ const useGetUserId = () => {
   }, []); 
 
   useEffect(() => {
-    if (userId !== null) {
-      console.log('UserId:', userId);
+    if (userName !== null) {
+      console.log('UserName:', userName);
     }
-  }, [userId]); 
+  }, [userName]); 
 
-  return userId;
+  return userName;
 };
 
-export default useGetUserId;
+export default useGetUserName;

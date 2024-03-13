@@ -80,23 +80,23 @@ function PostReviewFetch() {
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Titel: </label><br />
                     <input type="text" name="title" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required /><br /><br />
-                    <label htmlFor="content">Recept: </label>
+                    <label htmlFor="content">Recept: </label><br></br>
                     <textarea name="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea><br />
-                    <label htmlFor="ingredients">Ingredienter: </label>
+                    <label htmlFor="ingredients">Ingredienter: </label><br></br>
                     <textarea name="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)}></textarea><br />
-                    <label htmlFor="description">Beskrivning: </label><br />
+                    <label htmlFor="description">Beskrivning: </label><br /><br></br>
                     <textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea><br />
 
                     <p>Välj Kategorier</p>
                     <div className="choseCategories">
                         <input type="checkbox" id="movie" value="movie" name="movie" onChange={handleCategoryChange} />
-                        <label htmlFor="movie">Film</label>
+                        <label htmlFor="movie">Film</label><br></br>
                         <input type="checkbox" id="book" value="book" name="book" onChange={handleCategoryChange} />
-                        <label htmlFor="book">Bok</label>
+                        <label htmlFor="book">Bok</label><br></br>
                         <input type="checkbox" id="song" value="song" name="song" onChange={handleCategoryChange} />
-                        <label htmlFor="song">Låt</label>
+                        <label htmlFor="song">Låt</label><br></br>
                         <input type="checkbox" id="game" value="game" name="game" onChange={handleCategoryChange} />
-                        <label htmlFor="game">Spel</label><br />
+                        <label htmlFor="game">Spel</label><br /><br></br>
                     </div>
 
                     <label htmlFor="image">Välj bild - valfritt : </label>

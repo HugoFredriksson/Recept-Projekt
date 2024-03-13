@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useGetUserId = () => {
-  const [userId, setUserId] = useState<number | null>(null);
+const useGetRole = () => {
+  const [userRole, setUserRole] = useState<string | null>(null);
 
-  const getUserIdFetch = async () => {
+  const getUserRoleFetch = async () => {
     try {
-      const path = 'https://localhost:7118/User/VerifyUserId';
+      const path = 'https://localhost:7118/User/VerifyRole';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -20,9 +20,9 @@ const useGetUserId = () => {
         return null;
       }
 
-      const userId = parseInt(await response.text(), 10);
+      const fetchedUserRole = await response.text();
 
-      return userId;
+      return fetchedUserRole;
     } catch (error) {
       console.error('Error:', error);
       return null;
@@ -31,9 +31,9 @@ const useGetUserId = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUserId = await getUserIdFetch();
-      if (fetchedUserId !== null) {
-        setUserId(fetchedUserId);
+      const fetchedUserRole = await getUserRoleFetch();
+      if (fetchedUserRole !== null) {
+        setUserRole(fetchedUserRole);
       }
     };
 
@@ -41,12 +41,12 @@ const useGetUserId = () => {
   }, []); 
 
   useEffect(() => {
-    if (userId !== null) {
-      console.log('UserId:', userId);
+    if (userRole !== null) {
+      console.log('UserRole:', userRole);
     }
-  }, [userId]); 
+  }, [userRole]); 
 
-  return userId;
+  return userRole;
 };
 
-export default useGetUserId;
+export default useGetRole;

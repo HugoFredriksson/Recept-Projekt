@@ -15,17 +15,28 @@ body header {
 }
 body header nav {
   background-color: #38369A;
+  box-shadow: 1px 4px 9px 1px black;
 }
 body header nav ul {
   display: grid;
   text-decoration: none;
   list-style-type: none;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 0;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 0px;
+}
+body header nav ul li {
+  padding: 10px;
 }
 body header nav ul li a {
   text-decoration: none;
   color: white;
+}
+body header nav ul li a:hover {
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 30px;
+  color: black;
 }
 body header {
   grid-area: header;
@@ -36,31 +47,33 @@ body main {
 }
 body main .grid-container ul {
   border: 2px solid black;
-  border-radius: 20px;
-  width: 35%;
-  padding: 0;
+  width: 65%;
+  padding: 10px;
   padding-right: 40px;
   padding-left: 40px;
+  grid-template-columns: repeat(2, 1fr);
   margin: auto;
   list-style: none;
 }
-body main .grid-container ul li p {
+body main .grid-container ul li p, body main .grid-container ul li textarea, body main .grid-container ul li button {
+  background-color: white;
   border: 2px solid black;
-  border-radius: 20px;
+}
+body main .grid-container ul li button:hover {
+  background-color: #C6EBBE;
 }
 body main .grid-container ul img {
   width: 30vw;
 }
 body main .grid-container ul section {
   border: 2px solid black;
-  border-radius: 20px;
 }
 body footer {
   grid-area: footer;
 }
 
-@media only screen and (max-width: 650px) {
-  #root body header nav ul {
-    grid-template-columns: repeat(1, 1fr);
-  }
+#root .Profile main {
+  border: 2px solid black;
+  margin-top: 20px;
+  border-radius: 20px;
 }/*# sourceMappingURL=App.css.map */

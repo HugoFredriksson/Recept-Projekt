@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import useGetUserId from '../../hooks/GetUserId';
 
 interface User {
   UserName: string;
@@ -9,7 +8,7 @@ interface User {
 }
 
 const CreateUserComponent: React.FC = () => {
-  const userId = useGetUserId();
+
   const [user, setUser] = useState<User>({
     UserName: '',
     Email: '',
@@ -30,7 +29,6 @@ const CreateUserComponent: React.FC = () => {
       );
       localStorage.setItem('GUID', response.data);
       console.log('User created successfully:', response.data);
-      console.log(userId);
       
     } catch (error) {
       const axiosError = error as AxiosError;
