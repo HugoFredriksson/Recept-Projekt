@@ -11,7 +11,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ recipeId }) => {
 
   const likeRecipe = async () => {
     try {
-      const response = await fetch('https://localhost:7274/Likes/LikeRecipe', {
+      const response = await fetch('https://localhost:7118/Likes/LikeRecipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

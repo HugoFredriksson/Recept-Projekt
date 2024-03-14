@@ -40,7 +40,7 @@ function PostReviewFetch() {
             
             console.log(JSON.stringify(formData));
             
-            const response = await fetch('https://localhost:7274/Recipe/CreateRecipe', {
+            const response = await fetch('https://localhost:7118/Recipe/CreateRecipe', {
                 method: 'POST',
                 mode: "cors",
                 headers: myHeaders,

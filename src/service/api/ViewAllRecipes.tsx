@@ -38,7 +38,7 @@ const ViewAllRecipes: React.FC = () => {
   const fetchPosts = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://localhost:7274/Recipe/ViewAllRecipes');
+      const response = await fetch('https://localhost:7118/Recipe/ViewAllRecipes');
       const posts = await response.json() as Post[];
       setPosts(posts);
     } catch (e: any) {
@@ -54,7 +54,7 @@ const ViewAllRecipes: React.FC = () => {
 
   const handleCommentSubmit = async (recipeId: number, content: string) => {
     try {
-      const response = await fetch('https://localhost:7274/Comment/CreateComment', {
+      const response = await fetch('https://localhost:7118/Comment/CreateComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

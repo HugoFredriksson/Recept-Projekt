@@ -15,7 +15,7 @@ const UserInfo = () => {
       {userRole !== null && (
         <p>
           Roll:{" "}
-          {userRole === "3" ? "Admin" : userRole === "2" ? "Normal Användare" : "Gäst"}
+          {userRole === "3" ? "Admin" : userRole === "2" ? "Normal Användare" : (userRole === "1" || userRole === "0") ? "Gäst" : ""}
         </p>
       )}
     </div>

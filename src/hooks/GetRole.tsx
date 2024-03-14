@@ -5,7 +5,7 @@ const useGetRole = () => {
 
   const getUserRoleFetch = async () => {
     try {
-      const path = 'https://localhost:7274/User/VerifyRole';
+      const path = 'https://localhost:7118/User/VerifyRole';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',

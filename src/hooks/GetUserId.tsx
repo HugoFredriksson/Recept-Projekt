@@ -5,7 +5,7 @@ const useGetUserId = () => {
 
   const getUserIdFetch = async () => {
     try {
-      const path = 'https://localhost:7274/User/VerifyUserId';
+      const path = 'https://localhost:7118/User/VerifyUserId';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',

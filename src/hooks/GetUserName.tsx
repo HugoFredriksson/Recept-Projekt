@@ -5,7 +5,7 @@ const useGetUserName = () => {
 
   const getUserNameFetch = async () => {
     try {
-      const path = 'https://localhost:7274/User/VerifyUserName';
+      const path = 'https://localhost:7118/User/VerifyUserName';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',

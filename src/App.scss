@@ -1,94 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
 
+:root {
+  --primary-color: #38369A;
+  --secondary-color: #FFFF;
+  --tertiary-color: #C6EBBE;
+  --text-color: #ffffff;
+}
+
 body {
   text-align: center;
-  h1, h2, h3 {
-    font-family: "Domine", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-  }
+  font-family: "Domine", serif;
+
   header {
-    display: grid;
-    grid-area: header;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    box-shadow: 1px 4px 9px 1px black;
 
     nav {
-      background-color: #38369A;
-      box-shadow: 1px 4px 9px 1px black;
       ul {
-        display: grid;
-        
-        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         list-style-type: none;
-        grid-template-columns: repeat(1, 1fr);
-        padding: 0px;
-        
+        padding: 0;
+
         li {
           padding: 10px;
-          
+
           a {
-            color: #ffffff;
-            background-color: #00000000;
+            color: var(--text-color);
+            background-color: transparent;
             padding: 10px;
             border-radius: 30px;
-            border: 2px solid white;
-          }
-          a:hover {
-            background-color: #FFFF;
-            border: 2px solid black;
-            padding: 10px;
-            border-radius: 30px;
-            color: black;
+            border: 2px solid var(--text-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+
+            &:hover {
+              background-color: var(--secondary-color);
+              border-color: black;
+              color: black;
+            }
           }
         }
       }
     }
   }
 
-  header {
-    grid-area: header;
-  }
-
   main {
-    grid-area: main;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--secondary-color);
 
     .grid-container {
       margin-top: 20px;
+
       ul {
         border: 2px solid black;
         width: 65%;
         padding: 10px;
         padding-right: 40px;
         padding-left: 40px;
-        grid-template-columns: repeat(2, 1fr);
         margin: auto;
         list-style: none;
+
         li {
           p, textarea, button {
-            background-color: #FFFF;
+            background-color: var(--secondary-color);
             border: 2px solid black;
           }
+
           button:hover {
-            background-color: #C6EBBE;
+            background-color: var(--tertiary-color);
           }
         }
+
         img {
           width: 30vw;
         }
+
         section {
           border: 2px solid black;
         }
       }
-      
     }
   }
 
   footer {
     grid-area: footer;
   }
+
+  @media screen and (min-width: 768px) {
+    header {
+      nav {
+        ul {
+          justify-content: space-between;
+        }
+      }
+    }
+  }
 }
+
 #root {
   .Profile {
     main {
