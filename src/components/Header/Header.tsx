@@ -1,42 +1,22 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import useGetRole from '../../hooks/GetRole';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <div>
-                <Link to="/Home">Hem</Link>
-              </div>
-            </li>
-            <li>
-              <div>
-                <Link to="/AddRecipe">Lägg Till Recept</Link>
-              </div>
-            </li>
-            <li>
-              <div>
-                <Link to="/Profile">Profil</Link>
-              </div>
-            </li>
-            <li>
-              <div>
-                <Link to="/Admin">Admin</Link>
-              </div>
-            </li>
-            <li>
-              <div>
-                <Link to="/LogIn">Logga Ut</Link>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </header>
+function Navigation(){
+    return(
+        <header>
+            <nav>
+                <ul>
+                    <li><div><NavLink to="/home">Hem</NavLink></div></li>
+                    <li><div><NavLink to="/addRecipe">Skapa Recept</NavLink></div></li>
+                    <li><div><NavLink to="/profile">Profil</NavLink></div></li>
+                    <li><div><NavLink to="/admin">Admin</NavLink></div></li>
+                    <li><div><NavLink to="/logIn">Logga In</NavLink></div></li>
+                </ul>
+            </nav>
+        </header>
     );
-  }
 }
 
-export default Header;
+export default  Navigation;

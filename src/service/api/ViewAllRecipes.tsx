@@ -3,6 +3,7 @@ import useGetUserId from '../../hooks/GetUserId';
 import CommentForm from '../../components/CommentForm/CommentForm';
 import LikeButton from '../../components/LikeButton/LikeButton';
 import useGetUserName from '../../hooks/GetUserName';
+import { Link, NavLink } from 'react-router-dom';
 
 interface Comment {
   commentId: number;
@@ -38,7 +39,7 @@ const ViewAllRecipes: React.FC = () => {
   const fetchPosts = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://localhost:7118/Recipe/ViewAllRecipes');
+      const response = await fetch('https://projekt-recept20240315095654.azurewebsites.net/Recipe/ViewAllRecipes');
       const posts = await response.json() as Post[];
       setPosts(posts);
     } catch (e: any) {
@@ -54,7 +55,7 @@ const ViewAllRecipes: React.FC = () => {
 
   const handleCommentSubmit = async (recipeId: number, content: string) => {
     try {
-      const response = await fetch('https://localhost:7118/Comment/CreateComment', {
+      const response = await fetch('https://projekt-recept20240315095654.azurewebsites.net/Comment/CreateComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +99,9 @@ const ViewAllRecipes: React.FC = () => {
           <img src={"./recipeImage/" + post.imageUrl + ".png"} alt={post.title} />
           <li><p>{post.timeStamp}</p></li>
           <li><p>Ingredienter: <br />{post.ingredients}</p></li>
-          <li><p>Recept: <br />{post.content}</p></li>
+          <NavLink to={`/home/${post.id}`}>
+              <p>Recept: <br />{post.content}</p>
+            </NavLink>
           <section className="categoriesUl">Kommentarer:
             {post.comments.map((comments, index) => (
               <p key={index}>{comments.content + " Namn:  " + comments.userName + " " + comments.timeStamp}</p>

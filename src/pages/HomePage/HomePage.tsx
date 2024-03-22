@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../../components/Header/Header'
 import ViewAllRecipes from '../../service/api/ViewAllRecipes'
 import Footer from '../../components/Footer/Footer'
+import { defer } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 interface Props {}
 

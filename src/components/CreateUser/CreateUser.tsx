@@ -24,7 +24,7 @@ const CreateUserComponent: React.FC = () => {
 
     try {
       const response: AxiosResponse<string> = await axios.post(
-        'https://localhost:7118/User/CreateUser',
+        'https://projekt-recept20240315095654.azurewebsites.net/User/CreateUser',
         user
       );
       localStorage.setItem('GUID', response.data);
@@ -44,7 +44,7 @@ const CreateUserComponent: React.FC = () => {
   };
 
   return (
-    <div>
+    <div id='createUser'>
       <h2>Create User</h2>
       <form>
         <div>

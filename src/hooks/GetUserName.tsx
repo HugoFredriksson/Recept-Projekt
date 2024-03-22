@@ -5,7 +5,7 @@ const useGetUserName = () => {
 
   const getUserNameFetch = async () => {
     try {
-      const path = 'https://localhost:7118/User/VerifyUserName';
+      const path = 'https://projekt-recept20240315095654.azurewebsites.net/User/VerifyUserName';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -38,13 +38,13 @@ const useGetUserName = () => {
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (userName !== null) {
-      console.log('UserName:', userName);
+      
     }
-  }, [userName]); 
+  }, [userName]);
 
   return userName;
 };

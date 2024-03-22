@@ -5,7 +5,7 @@ const useGetRole = () => {
 
   const getUserRoleFetch = async () => {
     try {
-      const path = 'https://localhost:7118/User/VerifyRole';
+      const path = 'https://projekt-recept20240315095654.azurewebsites.net/User/VerifyRole';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -38,13 +38,13 @@ const useGetRole = () => {
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (userRole !== null) {
-      console.log('UserRole:', userRole);
+      
     }
-  }, [userRole]); 
+  }, [userRole]);
 
   return userRole;
 };

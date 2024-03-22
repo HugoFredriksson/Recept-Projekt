@@ -6,17 +6,17 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import LogInPage from "../pages/LogInPage/LogInPage";
 
-
 export const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/", 
         element: <App />,
         children: [
-            { path: "Home", element: <HomePage />},
-            { path: "AddRecipe", element: <AddRecipePage />},
-            { path: "Profile", element: <ProfilePage />},
-            { path: "Admin", element: <AdminPage />},
-            { path: "LogIn", element: <LogInPage />},
+            { path: "/Home/:id", element: <HomePage /> },
+            { path: "/Home", element: <HomePage /> },
+            { path: "/AddRecipe", element: <AddRecipePage /> },
+            { path: "/Profile", element: <ProfilePage /> },
+            { path: "/Admin", element: <AdminPage /> },
+            { path: "/LogIn", element: <LogInPage /> },
         ],
-    }
-])
+    },
+]);

@@ -40,7 +40,7 @@ function PostReviewFetch() {
             
             console.log(JSON.stringify(formData));
             
-            const response = await fetch('https://localhost:7118/Recipe/CreateRecipe', {
+            const response = await fetch('https://projekt-recept20240315095654.azurewebsites.net/Recipe/CreateRecipe', {
                 method: 'POST',
                 mode: "cors",
                 headers: myHeaders,
@@ -78,7 +78,7 @@ function PostReviewFetch() {
     return (
         <div>
             <h2>Skapa ett recept!</h2>
-            <div className="gridContainer">
+            <div className="postFormContainer">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Titel: </label><br />
                     <input type="text" name="title" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required /><br /><br />

@@ -76,10 +76,4 @@ body footer {
   body header nav ul {
     justify-content: space-between;
   }
-}
-
-#root .Profile main {
-  border: 2px solid black;
-  margin-top: 20px;
-  border-radius: 20px;
 }/*# sourceMappingURL=App.css.map */

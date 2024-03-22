@@ -5,7 +5,7 @@ const useGetUserId = () => {
 
   const getUserIdFetch = async () => {
     try {
-      const path = 'https://localhost:7118/User/VerifyUserId';
+      const path = 'https://projekt-recept20240315095654.azurewebsites.net/User/VerifyUserId';
       const response = await fetch(path, {
         method: 'GET',
         mode: 'cors',
@@ -38,13 +38,13 @@ const useGetUserId = () => {
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (userId !== null) {
-      console.log('UserId:', userId);
+
     }
-  }, [userId]); 
+  }, [userId]);
 
   return userId;
 };

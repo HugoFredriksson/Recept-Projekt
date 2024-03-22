@@ -15,10 +15,10 @@ const LoginComponent: React.FC = () => {
   const loginUser = async () => {
     try {
       const response: AxiosResponse<string> = await axios.get(
-        'https://localhost:7118/User/LogIn',
+        'https://projekt-recept20240315095654.azurewebsites.net/User/LogIn',
         {
           headers: {
-          Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`, 
+            Authorization: `Basic ${btoa(`${user.Email}:${user.Password}`)}`,
           },
         }
       );
@@ -26,7 +26,7 @@ const LoginComponent: React.FC = () => {
       // Save the login key (GUID) to local storage
       localStorage.setItem('GUID', response.data);
 
-      window.location.reload(); 
+      window.location.reload();
       console.log('Login successful:', response.data);
     } catch (error) {
       const axiosError = error as AxiosError;
@@ -41,34 +41,34 @@ const LoginComponent: React.FC = () => {
     setUser((prevUser) => ({ ...prevUser, [name]: value }));
   };
   if (localStorage.getItem('GUID') === null) {
-  return (
-    <div>
-      <h2>Logga In!</h2>
-      <form>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="Email"
-            value={user.Email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="Password"
-            value={user.Password}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="button" onClick={loginUser}>
-          Login
-        </button>
-      </form>
-    </div>
-  );
+    return (
+      <div>
+        <h2>Logga In!</h2>
+        <form>
+          <div>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="Email"
+              value={user.Email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="Password"
+              value={user.Password}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button type="button" onClick={loginUser}>
+            Login
+          </button>
+        </form>
+      </div>
+    );
   } else {
     return null;
   }
